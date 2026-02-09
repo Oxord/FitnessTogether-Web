@@ -22,19 +22,14 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
   .for-who__grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .for-who__grid {
-    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
   }
 }
 
