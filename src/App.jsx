@@ -3,6 +3,9 @@ import { Footer } from './components/layout/Footer';
 import { HeroSection } from './components/sections/HeroSection';
 import { AboutSection } from './components/sections/AboutSection';
 import { FeaturesSection } from './components/sections/FeaturesSection';
+import { TechStackSection } from './components/sections/TechStackSection';
+import { ArchitectureSection } from './components/sections/ArchitectureSection';
+import { CreatorSection } from './components/sections/CreatorSection';
 import { CTASection } from './components/sections/CTASection';
 import './App.css';
 
@@ -19,31 +22,9 @@ function App() {
         <HeroSection />
         <AboutSection />
         <FeaturesSection />
-
-        {/* Tech Stack Section - Coming in Phase 5 */}
-        <section id="tech-stack" className="section-placeholder">
-          <div className="container">
-            <h2>Технологии</h2>
-            <p>Section coming soon...</p>
-          </div>
-        </section>
-
-        {/* Architecture Section - Coming in Phase 5 */}
-        <section id="architecture" className="section-placeholder">
-          <div className="container">
-            <h2>Архитектура</h2>
-            <p>Section coming soon...</p>
-          </div>
-        </section>
-
-        {/* Creator Section - Coming in Phase 5 */}
-        <section id="creator" className="section-placeholder">
-          <div className="container">
-            <h2>О Владельце</h2>
-            <p>Section coming soon...</p>
-          </div>
-        </section>
-
+        <TechStackSection />
+        <ArchitectureSection />
+        <CreatorSection />
         <CTASection />
       </main>
 
