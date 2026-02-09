@@ -12,9 +12,14 @@ export const Footer = () => {
 
   const socialLinks = [
     {
-      name: 'GitHub Organization',
-      href: 'https://github.com/Oxord',
-      icon: '⚡',
+      name: 'Скачать для iOS',
+      href: 'https://apps.apple.com/ru/app/fitness-together/id6753772855',
+      icon: '📱',
+    },
+    {
+      name: 'Telegram',
+      href: 'https://t.me/fitnesstogetherru',
+      icon: '💬',
     },
   ];
 
@@ -87,10 +92,7 @@ export const Footer = () => {
         {/* Footer Bottom */}
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © {currentYear} FitnessTogether. Выпускной проект лицея Инфотех.
-          </p>
-          <p className="footer__credits">
-            Made with <span className="footer__heart">♥</span> by Claude Sonnet 4.5
+            © {currentYear} FitnessTogether
           </p>
         </div>
       </div>

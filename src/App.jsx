@@ -5,6 +5,7 @@ import { AboutSection } from './components/sections/AboutSection';
 import { ForWhoSection } from './components/sections/ForWhoSection';
 import { FeaturesSection } from './components/sections/FeaturesSection';
 import { CTASection } from './components/sections/CTASection';
+import { CreatorSection } from './components/sections/CreatorSection';
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <ForWhoSection />
         <FeaturesSection />
         <CTASection />
+        <CreatorSection />
       </main>
 
       <Footer />

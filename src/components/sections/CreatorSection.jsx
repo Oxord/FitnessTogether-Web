@@ -7,7 +7,11 @@ import './CreatorSection.css';
 export const CreatorSection = () => {
   const {
     title,
+    name,
+    photo,
     description,
+    mission,
+    contacts,
     yooMoneyWallet,
     donateText,
     donateDescription,
@@ -45,71 +49,76 @@ export const CreatorSection = () => {
 
         <div className="creator__content">
           <AnimatedSection animation="fade-up" delay={0.2}>
-            <Card className="creator__info-card">
-              <div className="creator__placeholder-notice">
-                <span className="creator__placeholder-icon">📝</span>
-                <p className="creator__placeholder-text">
-                  Это секция с информацией о владельце проекта. Для
-                  заполнения обновите <code>src/utils/content.js</code>
-                </p>
-              </div>
-
-              <div className="creator__description">
-                <p>{description}</p>
-              </div>
-            </Card>
-          </AnimatedSection>
-
-          <AnimatedSection animation="fade-up" delay={0.4}>
-            <Card className="creator__donate-card">
-              <h3 className="creator__donate-title">{donateText}</h3>
-
-              <div className="creator__donate-description">
-                {donateDescription.map((line, index) => (
-                  <p key={index} className="creator__donate-line">
-                    {line}
-                  </p>
-                ))}
-              </div>
-
-              <div className="creator__donate-actions">
-                <Button variant="filled" onClick={handleDonate}>
-                  {yooMoneyWallet
-                    ? 'Donate via ЮMoney ❤️'
-                    : 'Donate (Coming Soon) ❤️'}
-                </Button>
-
-                {!yooMoneyWallet && (
-                  <p className="creator__donate-placeholder">
-                    <small>
-                      Добавьте номер ЮМoney кошелька в{' '}
-                      <code>content.creator.yooMoneyWallet</code>
-                    </small>
-                  </p>
+            <Card className="creator__unified-card">
+              {/* Author Photo and Info */}
+              <div className="creator__profile">
+                {photo && (
+                  <img
+                    src={photo}
+                    alt={name || 'Автор проекта'}
+                    className="creator__photo"
+                  />
                 )}
+                <div className="creator__bio">
+                  {name && <h3 className="creator__name">{name}</h3>}
+                  <div className="creator__description">
+                    <p>{description}</p>
+                    {mission && <p className="creator__mission">{mission}</p>}
+                  </div>
+                </div>
               </div>
 
-              {/* QR Code Placeholder */}
-              {yooMoneyWallet && (
-                <div className="creator__qr-placeholder">
-                  <p className="creator__qr-text">
-                    Или отсканируйте QR-код:
-                  </p>
-                  <div className="creator__qr-box">
-                    <span className="creator__qr-icon">📱</span>
-                    <small>
-                      QR-код можно сгенерировать на{' '}
+              {/* Contact Links */}
+              {contacts && contacts.length > 0 && (
+                <div className="creator__contacts">
+                  <h4 className="creator__contacts-title">Связаться со мной:</h4>
+                  <div className="creator__contacts-list">
+                    {contacts.map((contact) => (
                       <a
-                        href="https://qrcoder.ru/"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        key={contact.type}
+                        href={contact.href}
+                        className="creator__contact-link"
+                        target={contact.type === 'email' ? '_self' : '_blank'}
+                        rel={contact.type === 'email' ? undefined : 'noopener noreferrer'}
                       >
-                        qrcoder.ru
+                        <span className="creator__contact-icon">{contact.icon}</span>
+                        <span className="creator__contact-label">{contact.label}</span>
+                        <span className="creator__contact-value">{contact.value}</span>
                       </a>
-                    </small>
+                    ))}
                   </div>
                 </div>
               )}
+
+              {/* Donate Section */}
+              <div className="creator__donate-section">
+                <h3 className="creator__donate-title">{donateText}</h3>
+
+                <div className="creator__donate-description">
+                  {donateDescription.map((line, index) => (
+                    <p key={index} className="creator__donate-line">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="creator__donate-actions">
+                  <Button variant="filled" onClick={handleDonate}>
+                    {yooMoneyWallet
+                      ? 'Donate via ЮMoney ❤️'
+                      : 'Donate (Coming Soon) ❤️'}
+                  </Button>
+
+                  {!yooMoneyWallet && (
+                    <p className="creator__donate-placeholder">
+                      <small>
+                        Добавьте номер ЮМoney кошелька в{' '}
+                        <code>content.creator.yooMoneyWallet</code>
+                      </small>
+                    </p>
+                  )}
+                </div>
+              </div>
             </Card>
           </AnimatedSection>
         </div>

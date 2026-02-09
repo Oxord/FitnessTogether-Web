@@ -39,7 +39,13 @@ export const ForWhoSection = () => {
                 </ul>
 
                 <div className="for-who__cta">
-                  <Button variant="outlined" fullWidth>
+                  <Button
+                    variant="outlined"
+                    fullWidth
+                    href={audience.ctaHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {audience.cta}
                   </Button>
                 </div>

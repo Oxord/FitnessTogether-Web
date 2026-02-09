@@ -65,19 +65,6 @@ export const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="header__actions">
-            <Button
-              variant="plain"
-              href="https://github.com/Oxord"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="header__github-button"
-            >
-              GitHub
-            </Button>
-          </div>
-
           {/* Mobile Menu Toggle */}
           <button
             className={`header__mobile-toggle ${isMobileMenuOpen ? 'header__mobile-toggle--open' : ''}`}
@@ -104,15 +91,6 @@ export const Header = () => {
                 {item.name}
               </a>
             ))}
-            <Button
-              variant="filled"
-              href="https://github.com/Oxord"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="header__mobile-github"
-            >
-              GitHub
-            </Button>
           </nav>
         </div>
       </div>
