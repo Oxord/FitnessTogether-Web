@@ -1,6 +1,10 @@
-# FitnessTogether - Landing Page
+# FitnessTogether - Landing Page 🏋️
 
 Landing page для проекта FitnessTogether - AI-powered fitness ecosystem.
+
+[![Deploy Status](https://github.com/Oxord/FitnessTogether-Web/actions/workflows/deploy.yml/badge.svg)](https://github.com/Oxord/FitnessTogether-Web/actions/workflows/deploy.yml)
+
+Современный, адаптивный SPA-лендинг, созданный с использованием React + Vite. Демонстрирует полную экосистему FitnessTogether с красивыми анимациями и UI в стиле iOS.
 
 ## Технологии
 
