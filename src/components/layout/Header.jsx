@@ -17,11 +17,10 @@ export const Header = () => {
   }, []);
 
   const navigation = [
-    { name: 'О проекте', href: '#about' },
+    { name: 'О платформе', href: '#about' },
+    { name: 'Для кого', href: '#for-who' },
     { name: 'Возможности', href: '#features' },
-    { name: 'Технологии', href: '#tech-stack' },
-    { name: 'Архитектура', href: '#architecture' },
-    { name: 'Автор', href: '#creator' },
+    { name: 'Скачать', href: '#download' },
   ];
 
   const scrollToSection = (e, href) => {

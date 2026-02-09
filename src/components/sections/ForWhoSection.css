@@ -1,0 +1,142 @@
+.for-who {
+  background-color: var(--bg-primary);
+}
+
+.for-who__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.for-who__subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--space-16);
+}
+
+.for-who__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .for-who__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .for-who__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.for-who__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: left;
+  transition: all var(--transition-base);
+  padding: var(--space-8);
+}
+
+.for-who__icon {
+  font-size: 3.5rem;
+  margin-bottom: var(--space-5);
+  line-height: 1;
+  transition: transform var(--transition-base);
+  text-align: center;
+}
+
+.for-who__card:hover .for-who__icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.for-who__card-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  text-align: center;
+}
+
+.for-who__card-description {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.for-who__benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-8) 0;
+  flex: 1;
+}
+
+.for-who__benefit {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.for-who__benefit-icon {
+  color: var(--ft-orange);
+  font-weight: var(--font-bold);
+  flex-shrink: 0;
+  font-size: var(--text-base);
+}
+
+.for-who__cta {
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+
+/* Hover effects */
+.for-who__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(255, 140, 0, 0.15);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .for-who__title {
+    font-size: var(--text-3xl);
+  }
+
+  .for-who__subtitle {
+    font-size: var(--text-base);
+  }
+
+  .for-who__icon {
+    font-size: 2.5rem;
+  }
+
+  .for-who__card-title {
+    font-size: var(--text-xl);
+  }
+
+  .for-who__card-description {
+    font-size: var(--text-sm);
+  }
+
+  .for-who__card {
+    padding: var(--space-6);
+  }
+
+  .for-who__grid {
+    gap: var(--space-6);
+  }
+}

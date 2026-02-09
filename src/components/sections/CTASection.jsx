@@ -7,7 +7,7 @@ export const CTASection = () => {
   const { title, subtitle, buttons } = content.cta;
 
   return (
-    <section className="cta">
+    <section id="download" className="cta">
       <div className="container">
         <AnimatedSection animation="fade-up">
           <div className="cta__content">

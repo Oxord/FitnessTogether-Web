@@ -2,10 +2,10 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { HeroSection } from './components/sections/HeroSection';
 import { AboutSection } from './components/sections/AboutSection';
+import { ForWhoSection } from './components/sections/ForWhoSection';
 import { FeaturesSection } from './components/sections/FeaturesSection';
 import { TechStackSection } from './components/sections/TechStackSection';
 import { ArchitectureSection } from './components/sections/ArchitectureSection';
-import { CreatorSection } from './components/sections/CreatorSection';
 import { CTASection } from './components/sections/CTASection';
 import './App.css';
 
@@ -21,11 +21,12 @@ function App() {
       <main id="main-content" className="main">
         <HeroSection />
         <AboutSection />
+        <ForWhoSection />
         <FeaturesSection />
+        <CTASection />
+        {/* Technical sections for developers */}
         <TechStackSection />
         <ArchitectureSection />
-        <CreatorSection />
-        <CTASection />
       </main>
 
       <Footer />
