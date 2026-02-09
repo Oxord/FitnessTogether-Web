@@ -1,0 +1,27 @@
+{
+  "name": "FitnessTogether - AI-Powered Fitness Ecosystem",
+  "short_name": "FitnessTogether",
+  "description": "Комплексная экосистема для фитнес-тренеров и клиентов с локальным AI-анализом",
+  "start_url": "/FitnessTogether-Web/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FF8C00",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/FitnessTogether-Web/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/FitnessTogether-Web/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "fitness", "lifestyle"],
+  "lang": "ru",
+  "dir": "ltr"
+}
