@@ -1,0 +1,214 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--bg-primary);
+  transition: all var(--transition-base);
+}
+
+.header--scrolled {
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  gap: var(--space-6);
+}
+
+/* Logo */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: var(--font-bold);
+  font-size: var(--text-lg);
+  transition: opacity var(--transition-fast);
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
+.header__logo-image {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+}
+
+.header__logo-text {
+  color: var(--text-primary);
+}
+
+@media (max-width: 767px) {
+  .header__logo-text {
+    display: none;
+  }
+}
+
+/* Desktop Navigation */
+.header__nav {
+  display: none;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .header__nav {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+.header__nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  position: relative;
+  transition: color var(--transition-fast);
+  padding: var(--space-2) 0;
+}
+
+.header__nav-link:hover {
+  color: var(--ft-orange);
+}
+
+.header__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--ft-orange);
+  transition: width var(--transition-fast);
+}
+
+.header__nav-link:hover::after {
+  width: 100%;
+}
+
+/* Header Actions */
+.header__actions {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .header__actions {
+    display: flex;
+    gap: var(--space-4);
+  }
+}
+
+.header__github-button {
+  min-width: auto;
+}
+
+/* Mobile Menu Toggle */
+.header__mobile-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: var(--z-modal);
+}
+
+@media (min-width: 1024px) {
+  .header__mobile-toggle {
+    display: none;
+  }
+}
+
+.header__mobile-toggle-line {
+  width: 28px;
+  height: 3px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: all var(--transition-base);
+  transform-origin: center;
+}
+
+.header__mobile-toggle--open .header__mobile-toggle-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.header__mobile-toggle--open .header__mobile-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.header__mobile-toggle--open .header__mobile-toggle-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.header__mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-primary);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all var(--transition-base);
+  overflow-y: auto;
+}
+
+.header__mobile-menu--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (min-width: 1024px) {
+  .header__mobile-menu {
+    display: none;
+  }
+}
+
+.header__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  gap: var(--space-2);
+}
+
+.header__mobile-nav-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.header__mobile-nav-link:hover,
+.header__mobile-nav-link:focus {
+  background-color: var(--ft-orange-alpha);
+  color: var(--ft-orange);
+}
+
+.header__mobile-github {
+  margin-top: var(--space-6);
+}
+
+/* Prevent scroll when mobile menu is open */
+body:has(.header__mobile-menu--open) {
+  overflow: hidden;
+}

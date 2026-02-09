@@ -1,0 +1,124 @@
+.footer {
+  background-color: var(--bg-secondary);
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-8);
+  margin-top: var(--space-24);
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .footer__content {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-12);
+  }
+}
+
+/* Footer Brand */
+.footer__brand {
+  max-width: 400px;
+}
+
+.footer__brand-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.footer__brand-description {
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 0;
+}
+
+/* Footer Sections */
+.footer__section-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.footer__nav,
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer__nav-link,
+.footer__social-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--text-base);
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.footer__nav-link:hover,
+.footer__social-link:hover {
+  color: var(--ft-orange);
+}
+
+.footer__social-icon {
+  font-size: var(--text-xl);
+}
+
+/* Footer Bottom */
+.footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--system-gray-4);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.footer__copyright,
+.footer__credits {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+.footer__heart {
+  color: var(--system-red);
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background-color: var(--bg-secondary);
+  }
+
+  .footer__bottom {
+    border-top-color: var(--system-gray);
+  }
+}
