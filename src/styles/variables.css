@@ -1,0 +1,133 @@
+:root {
+  /* Brand Colors из iOS app */
+  --ft-orange: #FF8C00;
+  --ft-orange-light: #FFB84D;
+  --ft-orange-hover: #E67E00;
+  --ft-orange-alpha: rgba(255, 140, 0, 0.1);
+  --ft-orange-alpha-20: rgba(255, 140, 0, 0.2);
+
+  /* Neutrals - Light Theme */
+  --text-primary: #1D1D1F;
+  --text-secondary: #6E6E73;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F7;
+  --bg-tertiary: #F2F2F2;
+
+  /* System Colors */
+  --system-gray: #8E8E93;
+  --system-gray-2: #AEAEB2;
+  --system-gray-3: #C7C7CC;
+  --system-gray-4: #D1D1D6;
+  --system-gray-6: #F2F2F7;
+
+  --system-red: #FF3B30;
+  --system-green: #34C759;
+  --system-blue: #007AFF;
+  --system-yellow: #FFCC00;
+  --system-cyan: #32ADE6;
+  --system-teal: #30B0C7;
+
+  /* Spacing System (8px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Typography */
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Droid Sans Mono', 'Source Code Pro', monospace;
+
+  /* Font Sizes (Mobile First) */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  --text-6xl: 3.75rem;     /* 60px */
+
+  /* Font Weights */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 15px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --shadow-card: 0 2px 3px rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* Breakpoints (for JS usage) */
+  --breakpoint-mobile: 320px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1440px;
+
+  /* Container Max Width */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+}
+
+/* Desktop Typography Scaling */
+@media (min-width: 768px) {
+  :root {
+    --text-4xl: 2.5rem;    /* 40px */
+    --text-5xl: 3.5rem;    /* 56px */
+    --text-6xl: 4.5rem;    /* 72px */
+  }
+}
+
+/* Dark Mode Support (future) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #F5F5F7;
+    --text-secondary: #A1A1A6;
+    --bg-primary: #000000;
+    --bg-secondary: #1D1D1F;
+    --bg-tertiary: #2C2C2E;
+  }
+}

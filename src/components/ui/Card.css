@@ -1,0 +1,57 @@
+.card {
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-lg); /* 15px */
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+}
+
+/* Hoverable Variant */
+.card--hoverable {
+  cursor: pointer;
+}
+
+.card--hoverable:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+.card--hoverable:active {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .card {
+    padding: var(--space-5);
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .card {
+    padding: var(--space-8);
+  }
+}
+
+/* Dark Background Variant (для использования на темном фоне) */
+.card--dark {
+  background-color: var(--bg-secondary);
+}
+
+/* Transparent Background */
+.card--transparent {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Outlined Variant */
+.card--outlined {
+  box-shadow: none;
+  border: 1px solid var(--system-gray-4);
+}
+
+.card--outlined.card--hoverable:hover {
+  border-color: var(--ft-orange);
+}

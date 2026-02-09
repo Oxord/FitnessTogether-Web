@@ -1,0 +1,114 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  font-family: var(--font-primary);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-none);
+  white-space: nowrap;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+/* Sizes */
+.badge--small {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+}
+
+.badge--medium {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.badge--large {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+}
+
+/* Primary Variant - ftOrange */
+.badge--primary {
+  background-color: var(--ft-orange);
+  color: white;
+}
+
+.badge--primary:hover {
+  background-color: var(--ft-orange-hover);
+}
+
+/* Secondary Variant - Light Orange */
+.badge--secondary {
+  background-color: var(--ft-orange-alpha);
+  color: var(--ft-orange);
+  border: 1px solid var(--ft-orange);
+}
+
+.badge--secondary:hover {
+  background-color: var(--ft-orange-alpha-20);
+}
+
+/* Outline Variant */
+.badge--outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--system-gray-3);
+}
+
+.badge--outline:hover {
+  border-color: var(--ft-orange);
+  color: var(--ft-orange);
+}
+
+/* Success Variant */
+.badge--success {
+  background-color: var(--system-green);
+  color: white;
+}
+
+/* Info Variant */
+.badge--info {
+  background-color: var(--system-blue);
+  color: white;
+}
+
+/* Warning Variant */
+.badge--warning {
+  background-color: var(--system-yellow);
+  color: var(--text-primary);
+}
+
+/* Error Variant */
+.badge--error {
+  background-color: var(--system-red);
+  color: white;
+}
+
+/* Pill Shape (more rounded) */
+.badge--pill {
+  border-radius: var(--radius-full);
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+}
+
+/* Dot Indicator */
+.badge--dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .badge--medium {
+    padding: var(--space-2) var(--space-5);
+    font-size: var(--text-base);
+  }
+
+  .badge--large {
+    padding: var(--space-3) var(--space-8);
+    font-size: var(--text-lg);
+  }
+}

@@ -1,0 +1,11 @@
+.animated-section {
+  will-change: opacity, transform;
+}
+
+/* Для accessibility - отключаем анимации для пользователей с prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animated-section {
+    animation: none !important;
+    transition: none !important;
+  }
+}
