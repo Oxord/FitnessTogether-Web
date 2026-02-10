@@ -180,6 +180,8 @@
   font-size: var(--text-base);
   color: var(--text-primary);
   font-family: var(--font-mono);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Donate Section */

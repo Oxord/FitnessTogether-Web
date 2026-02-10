@@ -11,12 +11,14 @@ export const Button = ({
   variant = 'filled',
   href,
   onClick,
+  fullWidth = false,
   className = '',
   ...props
 }) => {
   const baseClass = 'button';
   const variantClass = `button--${variant}`;
-  const combinedClass = `${baseClass} ${variantClass} ${className}`.trim();
+  const fullWidthClass = fullWidth ? 'button--full-width' : '';
+  const combinedClass = `${baseClass} ${variantClass} ${fullWidthClass} ${className}`.trim();
 
   // Если href передан - рендерим ссылку
   if (href) {

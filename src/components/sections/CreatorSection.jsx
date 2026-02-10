@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { AnimatedSection } from '../ui/AnimatedSection';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
+import { DonateModal } from '../ui/DonateModal';
 import { content } from '../../utils/content';
 import './CreatorSection.css';
 
@@ -17,27 +19,32 @@ export const CreatorSection = () => {
     donateDescription,
   } = content.creator;
 
-  const handleDonate = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleDonateClick = () => {
     if (yooMoneyWallet) {
-      // Если кошелек указан - открываем форму ЮМoney
-      const params = new URLSearchParams({
-        receiver: yooMoneyWallet,
-        quickpay_form: 'donate',
-        targets: 'Поддержка проекта FitnessTogether',
-        paymentType: 'AC',
-        sum: '100',
-        comment: 'Донат от сообщества',
-      });
-      window.open(
-        `https://yoomoney.ru/quickpay/confirm?${params}`,
-        '_blank'
-      );
+      setIsModalOpen(true);
     } else {
-      // Placeholder behavior
       alert(
         'ЮМoney кошелек еще не настроен. Обновите src/utils/content.js'
       );
     }
+  };
+
+  const handleDonateSubmit = (amount) => {
+    // Открываем форму ЮМoney с указанной суммой
+    const params = new URLSearchParams({
+      receiver: yooMoneyWallet,
+      'quickpay-form': 'donate',
+      targets: 'Поддержка проекта FitnessTogether',
+      paymentType: 'AC',
+      sum: amount.toString(),
+      label: 'FitnessTogether',
+    });
+    window.open(
+      `https://yoomoney.ru/quickpay/confirm.xml?${params}`,
+      '_blank'
+    );
   };
 
   return (
@@ -103,7 +110,7 @@ export const CreatorSection = () => {
                 </div>
 
                 <div className="creator__donate-actions">
-                  <Button variant="filled" onClick={handleDonate}>
+                  <Button variant="filled" onClick={handleDonateClick}>
                     {yooMoneyWallet
                       ? 'Donate via ЮMoney ❤️'
                       : 'Donate (Coming Soon) ❤️'}
@@ -123,6 +130,13 @@ export const CreatorSection = () => {
           </AnimatedSection>
         </div>
       </div>
+
+      {/* Donate Modal */}
+      <DonateModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleDonateSubmit}
+      />
     </section>
   );
 };
