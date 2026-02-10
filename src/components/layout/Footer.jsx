@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 export const Footer = () => {
@@ -66,6 +67,9 @@ export const Footer = () => {
                   {link.name}
                 </a>
               ))}
+              <Link to="/feedback" className="footer__nav-link">
+                Обратная связь
+              </Link>
             </nav>
           </div>
 

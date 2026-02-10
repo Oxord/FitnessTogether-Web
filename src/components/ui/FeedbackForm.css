@@ -1,0 +1,157 @@
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Field */
+.feedback-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.feedback-form__label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+}
+
+/* Input & Textarea */
+.feedback-form__input,
+.feedback-form__textarea {
+  width: 100%;
+  padding: var(--space-4);
+  background: var(--bg-secondary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  transition: all var(--transition-fast);
+}
+
+.feedback-form__input:focus,
+.feedback-form__textarea:focus {
+  outline: none;
+  border-color: var(--ft-orange);
+  background: var(--bg-primary);
+}
+
+.feedback-form__input--error,
+.feedback-form__textarea--error {
+  border-color: var(--system-red);
+}
+
+.feedback-form__input::placeholder,
+.feedback-form__textarea::placeholder {
+  color: var(--system-gray-2);
+}
+
+.feedback-form__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Error */
+.feedback-form__error {
+  font-size: var(--text-sm);
+  color: var(--system-red);
+  margin: 0;
+}
+
+/* Radio Group */
+.feedback-form__radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.feedback-form__radio {
+  cursor: pointer;
+}
+
+.feedback-form__radio-input {
+  display: none;
+}
+
+.feedback-form__radio-label {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-secondary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.feedback-form__radio-label:hover {
+  background: var(--ft-orange-alpha);
+  border-color: var(--ft-orange);
+  color: var(--ft-orange);
+}
+
+.feedback-form__radio-input:checked + .feedback-form__radio-label {
+  background: var(--ft-orange);
+  border-color: var(--ft-orange);
+  color: white;
+}
+
+/* Result screens (success / error) */
+.feedback-form__result {
+  text-align: center;
+  padding: var(--space-8) 0;
+}
+
+.feedback-form__result-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background: var(--system-green);
+  color: white;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-6);
+}
+
+.feedback-form__result-icon--error {
+  background: var(--system-red);
+}
+
+.feedback-form__result-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.feedback-form__result-text {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.feedback-form__result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+/* Mobile */
+@media (max-width: 479px) {
+  .feedback-form__radio-group {
+    flex-direction: column;
+  }
+
+  .feedback-form__radio-label {
+    text-align: center;
+    width: 100%;
+  }
+}

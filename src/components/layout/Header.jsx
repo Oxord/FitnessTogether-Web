@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import { Button } from '../ui/Button';
 import './Header.css';
@@ -21,6 +22,7 @@ export const Header = () => {
     { name: 'Для кого', href: '#for-who' },
     { name: 'Возможности', href: '#features' },
     { name: 'Скачать', href: '#download' },
+    { name: 'Автор', href: '#creator' },
   ];
 
   const scrollToSection = (e, href) => {
@@ -63,6 +65,9 @@ export const Header = () => {
                 {item.name}
               </a>
             ))}
+            <Link to="/feedback" className="header__nav-link">
+              Обратная связь
+            </Link>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -91,6 +96,13 @@ export const Header = () => {
                 {item.name}
               </a>
             ))}
+            <Link
+              to="/feedback"
+              className="header__mobile-nav-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Обратная связь
+            </Link>
           </nav>
         </div>
       </div>
