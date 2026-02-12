@@ -16,7 +16,7 @@ export const content = {
       },
       secondary: {
         text: 'Узнать больше',
-        href: '#for-who',
+        href: '#for-who'
       },
     },
   },
