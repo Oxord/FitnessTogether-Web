@@ -32,11 +32,13 @@
 
 .button--filled:hover {
   background-color: var(--ft-orange-hover);
+  color: white; /* Явно сохраняем белый цвет текста */
   box-shadow: var(--shadow-lg);
   transform: translateY(-1px);
 }
 
 .button--filled:active {
+  color: white; /* Явно сохраняем белый цвет текста */
   transform: translateY(0);
   box-shadow: var(--shadow-sm);
 }
