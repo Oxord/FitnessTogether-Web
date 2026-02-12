@@ -31,35 +31,25 @@ jobs:
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
 
-      - name: Check server directory structure
+      - name: Check nginx and web directories
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          echo "=== Home directory contents ==="
-          ls -la ~/
-
-          echo -e "\n=== Check for domains directory ==="
-          if [ -d ~/domains ]; then
-            echo "Found ~/domains/"
-            ls -la ~/domains/
+          echo "=== Checking /var/www/ ==="
+          if [ -d /var/www ]; then
+            ls -la /var/www/ 2>/dev/null || sudo ls -la /var/www/
           else
-            echo "No ~/domains/ directory"
+            echo "No /var/www/ directory"
           fi
 
-          echo -e "\n=== Check for www directory ==="
-          if [ -d ~/www ]; then
-            echo "Found ~/www/"
-            ls -la ~/www/
+          echo -e "\n=== Checking nginx config (if readable) ==="
+          if [ -r /etc/nginx/sites-available/default ]; then
+            cat /etc/nginx/sites-available/default | grep -A 5 "root"
           else
-            echo "No ~/www/ directory"
+            echo "Cannot read nginx config (need sudo access)"
           fi
 
-          echo -e "\n=== Check for httpdocs ==="
-          if [ -d ~/httpdocs ]; then
-            echo "Found ~/httpdocs/"
-            ls -la ~/httpdocs/
-          else
-            echo "No ~/httpdocs/ directory"
-          fi
+          echo -e "\n=== Checking nginx sites-enabled ==="
+          ls -la /etc/nginx/sites-enabled/ 2>/dev/null || echo "Cannot access sites-enabled"
           EOF
 
       - name: Create public_html directory
