@@ -1,4 +1,4 @@
-name: Deploy to Timeweb.Cloud via SSH
+name: Deploy to Timeweb.Cloud via SSH Password
 
 on:
   push:
@@ -28,12 +28,19 @@ jobs:
           VITE_TELEGRAM_CHAT_ID: ${{ secrets.VITE_TELEGRAM_CHAT_ID }}
         run: npm run build
 
-      - name: Deploy to Timeweb via rsync
-        uses: burnett01/rsync-deployments@7.0.1
-        with:
-          switches: -avzr --delete --exclude='.git*' --exclude='node_modules/' --exclude='.github/'
-          path: dist/
-          remote_path: ~/public_html/
-          remote_host: ${{ secrets.SSH_HOST }}
-          remote_user: ${{ secrets.SSH_USERNAME }}
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Create public_html directory
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "mkdir -p ~/public_html"
+
+      - name: Deploy via rsync with password
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            dist/ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/public_html/
+
+      - name: Verify deployment
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "ls -la ~/public_html/"
