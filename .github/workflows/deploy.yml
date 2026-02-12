@@ -31,37 +31,16 @@ jobs:
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
 
-      - name: Check nginx and web directories
+      - name: Clear old files from /var/www/html/
         run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          echo "=== Checking /var/www/ ==="
-          if [ -d /var/www ]; then
-            ls -la /var/www/ 2>/dev/null || sudo ls -la /var/www/
-          else
-            echo "No /var/www/ directory"
-          fi
-
-          echo -e "\n=== Checking nginx config (if readable) ==="
-          if [ -r /etc/nginx/sites-available/default ]; then
-            cat /etc/nginx/sites-available/default | grep -A 5 "root"
-          else
-            echo "Cannot read nginx config (need sudo access)"
-          fi
-
-          echo -e "\n=== Checking nginx sites-enabled ==="
-          ls -la /etc/nginx/sites-enabled/ 2>/dev/null || echo "Cannot access sites-enabled"
-          EOF
-
-      - name: Create public_html directory
-        run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "mkdir -p ~/public_html"
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "rm -rf /var/www/html/*"
 
       - name: Deploy via rsync with password
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" rsync -avz --delete \
             -e "ssh -o StrictHostKeyChecking=no" \
-            dist/ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/public_html/
+            dist/ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/
 
       - name: Verify deployment
         run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "ls -la ~/public_html/"
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "ls -la /var/www/html/"
