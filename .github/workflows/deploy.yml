@@ -49,11 +49,14 @@ jobs:
           sudo find /var/www/html -type f -exec chmod 644 {} \;
           EOF
 
-      - name: Check nginx config
+      - name: Update nginx config
         run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -o StrictHostKeyChecking=no nginx-config.txt ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/tmp/nginx-default
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          echo "=== Full default nginx config ==="
-          sudo cat /etc/nginx/sites-available/default
+          sudo cp /tmp/nginx-default /etc/nginx/sites-available/default
+          sudo nginx -t
+          sudo systemctl reload nginx
+          echo "✅ Nginx config updated and reloaded"
           EOF
 
       - name: Verify deployment
