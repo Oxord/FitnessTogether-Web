@@ -46,8 +46,6 @@ export const HeroSection = () => {
             <Button
               variant="filled"
               href={cta.primary.href}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               {cta.primary.text}
             </Button>

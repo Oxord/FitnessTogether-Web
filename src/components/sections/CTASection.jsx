@@ -23,9 +23,6 @@ export const CTASection = () => {
               >
                 {buttons.primary.text}
               </Button>
-              <Button variant="plain" href={buttons.secondary.href}>
-                {buttons.secondary.text}
-              </Button>
             </div>
           </div>
         </AnimatedSection>
