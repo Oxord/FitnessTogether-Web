@@ -2,15 +2,12 @@
   "name": "fitnesstogether-web",
   "version": "1.0.0",
   "description": "Landing page for FitnessTogether - AI-powered fitness ecosystem",
-  "homepage": "https://oxord.github.io/FitnessTogether-Web/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "framer-motion": "^12.34.0",
