@@ -16,6 +16,33 @@ Landing page для проекта FitnessTogether - AI-powered fitness ecosyste
 
 ## Локальная Разработка
 
+### Настройка Переменных Окружения
+
+Для работы формы обратной связи необходимо настроить Telegram Bot:
+
+1. **Создайте `.env` файл** в корне проекта:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Получите Telegram Bot Token**:
+   - Откройте [@BotFather](https://t.me/BotFather) в Telegram
+   - Отправьте команду `/newbot` и следуйте инструкциям
+   - Скопируйте полученный токен в `VITE_TELEGRAM_BOT_TOKEN`
+
+3. **Получите Chat ID**:
+   - Откройте [@userinfobot](https://t.me/userinfobot) в Telegram
+   - Отправьте любое сообщение, чтобы узнать свой ID
+   - Скопируйте ID в `VITE_TELEGRAM_CHAT_ID`
+
+4. **Запустите бота**:
+   - Откройте диалог с вашим ботом в Telegram
+   - Отправьте команду `/start`
+
+> **Примечание**: Если переменные окружения не настроены, форма обратной связи откроет почтовый клиент вместо отправки через Telegram.
+
+### Команды
+
 ```bash
 # Установить зависимости
 npm install
@@ -44,12 +71,21 @@ npm run preview
    git push -u origin main
    ```
 
-3. **Включите GitHub Pages**:
+3. **Настройте GitHub Secrets для формы обратной связи**:
+   - Откройте Settings → Secrets and variables → Actions
+   - Нажмите "New repository secret"
+   - Добавьте секреты:
+     - `VITE_TELEGRAM_BOT_TOKEN` - токен бота от @BotFather
+     - `VITE_TELEGRAM_CHAT_ID` - ваш Chat ID от @userinfobot
+
+   > **Примечание**: Без этих секретов форма обратной связи будет открывать почтовый клиент вместо отправки через Telegram.
+
+4. **Включите GitHub Pages**:
    - Откройте Settings → Pages в вашем репозитории
    - Source: выберите "GitHub Actions"
    - Workflow автоматически запустится после push
 
-4. **Дождитесь деплоя**:
+5. **Дождитесь деплоя**:
    - Перейдите в Actions tab
    - Дождитесь завершения workflow "Deploy to GitHub Pages"
    - После завершения сайт будет доступен по URL
