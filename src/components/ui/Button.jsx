@@ -20,12 +20,28 @@ export const Button = ({
   const fullWidthClass = fullWidth ? 'button--full-width' : '';
   const combinedClass = `${baseClass} ${variantClass} ${fullWidthClass} ${className}`.trim();
 
+  // Обработчик для якорных ссылок
+  const handleAnchorClick = (e) => {
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Обновляем URL без перезагрузки страницы
+        window.history.pushState(null, '', href);
+      }
+    }
+  };
+
   // Если href передан - рендерим ссылку
   if (href) {
     return (
       <a
         href={href}
         className={combinedClass}
+        onClick={handleAnchorClick}
         {...props}
       >
         {children}
