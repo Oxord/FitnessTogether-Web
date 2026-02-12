@@ -31,6 +31,37 @@ jobs:
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
 
+      - name: Check server directory structure
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          echo "=== Home directory contents ==="
+          ls -la ~/
+
+          echo -e "\n=== Check for domains directory ==="
+          if [ -d ~/domains ]; then
+            echo "Found ~/domains/"
+            ls -la ~/domains/
+          else
+            echo "No ~/domains/ directory"
+          fi
+
+          echo -e "\n=== Check for www directory ==="
+          if [ -d ~/www ]; then
+            echo "Found ~/www/"
+            ls -la ~/www/
+          else
+            echo "No ~/www/ directory"
+          fi
+
+          echo -e "\n=== Check for httpdocs ==="
+          if [ -d ~/httpdocs ]; then
+            echo "Found ~/httpdocs/"
+            ls -la ~/httpdocs/
+          else
+            echo "No ~/httpdocs/ directory"
+          fi
+          EOF
+
       - name: Create public_html directory
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "mkdir -p ~/public_html"
