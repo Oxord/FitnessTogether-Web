@@ -52,16 +52,8 @@ jobs:
       - name: Check nginx config
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          echo "=== Default nginx config ==="
-          sudo cat /etc/nginx/sites-available/default | grep -E "(server_name|root|listen)"
-
-          echo -e "\n=== Check for fitness-together.ru config ==="
-          if [ -f /etc/nginx/sites-available/fitness-together.ru ]; then
-            echo "Found specific config:"
-            sudo cat /etc/nginx/sites-available/fitness-together.ru
-          else
-            echo "No specific config for fitness-together.ru"
-          fi
+          echo "=== Full default nginx config ==="
+          sudo cat /etc/nginx/sites-available/default
           EOF
 
       - name: Verify deployment
