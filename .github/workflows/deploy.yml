@@ -1,9 +1,9 @@
-name: Deploy to Timeweb.Cloud
+name: Deploy to Timeweb.Cloud via SSH
 
 on:
   push:
     branches: [main, master]
-  workflow_dispatch:  # Возможность запустить деплой вручную
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -28,16 +28,24 @@ jobs:
           VITE_TELEGRAM_CHAT_ID: ${{ secrets.VITE_TELEGRAM_CHAT_ID }}
         run: npm run build
 
-      - name: Deploy to Timeweb via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy to Timeweb via SSH
+        uses: easingthemes/ssh-deploy@v5.1.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: ./public_html/
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          SOURCE: "dist/"
+          TARGET: "~/public_html/"
+          EXCLUDE: "/node_modules/, /.git/, /.github/"
+          SCRIPT_BEFORE: |
+            whoami
+            pwd
+            ls -la
+            # Создать public_html если не существует
+            mkdir -p ~/public_html
+            echo "✅ Directory ~/public_html is ready"
+          SCRIPT_AFTER: |
+            echo "✅ Deployment completed successfully!"
+            cd ~/public_html/
+            ls -la
+            echo "📁 Files deployed to ~/public_html/"
