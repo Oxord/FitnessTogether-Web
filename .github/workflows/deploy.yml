@@ -41,6 +41,29 @@ jobs:
             -e "ssh -o StrictHostKeyChecking=no" \
             dist/ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/
 
+      - name: Fix permissions
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          sudo chown -R www-data:www-data /var/www/html/
+          sudo chmod -R 755 /var/www/html/
+          sudo find /var/www/html -type f -exec chmod 644 {} \;
+          EOF
+
+      - name: Check nginx config
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          echo "=== Default nginx config ==="
+          sudo cat /etc/nginx/sites-available/default | grep -E "(server_name|root|listen)"
+
+          echo -e "\n=== Check for fitness-together.ru config ==="
+          if [ -f /etc/nginx/sites-available/fitness-together.ru ]; then
+            echo "Found specific config:"
+            sudo cat /etc/nginx/sites-available/fitness-together.ru
+          else
+            echo "No specific config for fitness-together.ru"
+          fi
+          EOF
+
       - name: Verify deployment
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "ls -la /var/www/html/"
