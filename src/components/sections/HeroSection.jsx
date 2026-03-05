@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
@@ -29,7 +30,7 @@ export const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {badges.map((badge, index) => (
+            {badges.map((badge) => (
               <Badge key={badge} variant="secondary" size="large">
                 {badge}
               </Badge>

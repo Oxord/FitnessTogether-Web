@@ -9,10 +9,11 @@ export const DonateModal = ({ isOpen, onClose, onSubmit }) => {
   const presetAmounts = [100, 300, 500, 1000];
 
   useEffect(() => {
-    if (isOpen) {
-      setAmount('');
-      setError('');
-    }
+    if (!isOpen) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setAmount('');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setError('');
   }, [isOpen]);
 
   useEffect(() => {
